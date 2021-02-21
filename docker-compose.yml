@@ -1,0 +1,17 @@
+version: '3.7'
+
+services: 
+  # app
+  app:
+    build: .
+    hostname: app
+    env_file: ./app/.env
+    ports: 
+      - ${APP_PORT}:${APP_PORT_INTERNAL}
+    networks: 
+      - net_app
+
+networks:
+  net_app:
+    name: net_app
+    driver: bridge
